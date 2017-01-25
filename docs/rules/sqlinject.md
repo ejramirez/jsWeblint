@@ -1,4 +1,4 @@
-# prevents sql injection flaws (sqlinject)
+# Prevents sql injection flaws (sqlinject)
 
 Please describe the origin of the rule here.
 

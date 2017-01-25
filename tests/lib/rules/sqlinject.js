@@ -1,5 +1,5 @@
 /**
- * @fileoverview prevents sql injection flaws
+ * @fileoverview Prevents sql injection flaws
  * @author Eric
  */
 "use strict";
