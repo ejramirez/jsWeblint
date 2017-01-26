@@ -22,31 +22,24 @@ ruleTester.run("sqlinject", rule, {
 
     valid: [
 
-        // give me some code that won't trigger a warning
-        "var i = strip_tags('Some Text','');",
-        "var i = strip_tags('<script>malicious code</script>','');",
-        "var i = strip_tags('<h1><a></a></h1>','<h1>');"
+        "var i = 'hi'",
+        "var x = 1"
+        
     ],
 
     invalid: [
+       
         {
-            code: "var i = \"<script></script>\";",
+            code: "var i = 'SELECT * FROM;'",
             errors: [{
-                message: "unsanitized variable detected",
+                message: "sql string detected.",
                 type: "VariableDeclaration"
             }]
         },
         {
-            code: "var i = 'Some Text'",
+            code: "var i = 'INSERT * FROM;'",
             errors: [{
-                message: "unsanitized variable detected",
-                type: "VariableDeclaration"
-            }]
-        },
-        {
-            code: "var i = alert('alarming')",
-            errors: [{
-                message: "no strip_tags() call on string",
+                message: "sql string detected.",
                 type: "VariableDeclaration"
             }]
         }
