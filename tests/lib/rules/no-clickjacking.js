@@ -23,14 +23,15 @@ ruleTester.run("no-clickjacking", rule, {
     valid: [
 
         // give me some code that won't trigger a warning
+        "var xFrameOptions = require('x-frame-options');"
     ],
 
     invalid: [
         {
-            code: "",
+            code: "var express = require('express');",
             errors: [{
-                message: "Fill me in.",
-                type: "Me too"
+                message: "x-frame-options missing",
+                type: "CallExpression"
             }]
         }
     ]
